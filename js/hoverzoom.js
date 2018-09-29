@@ -646,6 +646,13 @@ var hoverZoom = {
                 if (url.startsWith('/') && url.indexOf('http') < 0)
                     url = window.location.protocol + '//' + window.location.hostname + url;
                 chrome.runtime.sendMessage({action:'addUrlToHistory', url:url});
+
+                if (location.hostname === 'www.reddit.com') {
+                    var redditLink = hz.currentLink.closest('.scrollerItem').find('div span a')[0].href;
+                    if (redditLink.startsWith('/') && redditLink.indexOf('http') < 0)
+                        redditLink = window.location.protocol + '//' + window.location.hostname + redditLink;
+                    chrome.runtime.sendMessage({action:'addUrlToHistory', url:redditLink});
+                }
             }
         }
 
