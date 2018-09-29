@@ -40,6 +40,18 @@ hoverZoomPlugins.push({
       });
     });
 
+    $('a[href*="//g.redditmedia.com"]').each(function () {
+      var link = $(this);
+      var post = link.closest('.scrollerItem');
+      var thumb = post.find('div[role="img"]')
+      var url = link.attr('href');
+      var title = post.find('a.title').text();
+
+      thumb.data('hoverZoomSrc', [url]);
+      thumb.data('hoverZoomCaption', [title]);
+      res.push(thumb);
+    });
+
     $('div[data-url*="//v.redd.it/"]').each(function () {
       var post = $(this);
       var link = post.attr('data-url');

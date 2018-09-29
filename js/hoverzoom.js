@@ -244,6 +244,9 @@ var hoverZoom = {
         }
 
         function isVideoLink(url, includeGifs) {
+            if (url.indexOf('g.redditmedia.com') > 0 && url.indexOf('fm=mp4') > 0)
+                return true;
+
             if (url.lastIndexOf('?') > 0)
                 url = url.substr(0, url.lastIndexOf('?'));
             var ext = url.substr(url.length - 4).toLowerCase();
